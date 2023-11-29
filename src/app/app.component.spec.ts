@@ -1,27 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { CalculatorComponent } from './components/calculator/calculator.component';
+import { CalculatorComponent } from './component/calculator/calculator.component';
 
 describe('AppComponent', () => {
-    let fixture: ComponentFixture<AppComponent>;
-    let app: AppComponent;
-
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [AppComponent, CalculatorComponent],
-        });
-        fixture = TestBed.createComponent(AppComponent);
-        app = fixture.componentInstance;
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [
+                AppComponent,
+                CalculatorComponent
+            ],
+        }).compileComponents();
     });
 
     describe('boundary', () => {
         it('should create the app', () => {
+            const fixture = TestBed.createComponent(AppComponent);
+            const app = fixture.componentInstance;
             expect(app).toBeTruthy();
         });
 
-        it('should display the title', () => {
-            const compiled = fixture.debugElement.nativeElement;
-            expect(compiled.querySelector('h1').textContent).toContain('Welcome to My Calculator App');
+        it('should render "My Calculator App" heading', () => {
+            const fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+            const compiled = fixture.nativeElement;
+            expect(compiled.querySelector('h2').textContent).toContain('My Calculator App');
+        });
+
+        it('should render app-calculator component', () => {
+            const fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+            const compiled = fixture.nativeElement;
+            expect(compiled.querySelector('app-calculator')).toBeTruthy();
         });
     });
 });
