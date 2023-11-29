@@ -6,14 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent {
-  display: string = '';
+  expression: string = '';
+  result: string = '';
 
-  appendToDisplay(value: string) {
+  appendToExpression(value: string) {
   }
 
-  calculate() {
+  calculateResult() {
   }
 
-  clear() {
+  clearExpression() {
   }
 }
